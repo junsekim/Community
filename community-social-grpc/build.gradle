@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+dependencies {
+    api project(":community-social")
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation project(":community-commons")
+    implementation project(":community-social-proto")
+    implementation 'io.grpc:grpc-all:1.43.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.0"
+    }
+}

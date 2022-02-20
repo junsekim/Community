@@ -1,0 +1,18 @@
+syntax= "proto3";
+option java_multiple_files= true;
+option java_package= 'com.icemelon404.community.social.proto';
+
+
+message Follower {
+  int64 id = 1;
+}
+
+message FollowerRequest {
+  int64 followee = 1;
+  int32 pageSize = 2;
+  int32 pageIndex = 3;
+}
+
+service FollowerFetchService {
+  rpc fetchFollowers(FollowerRequest) returns (stream Follower);
+}

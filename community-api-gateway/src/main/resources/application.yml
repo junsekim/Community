@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+        - id: social
+          uri: lb://social-http
+          predicates:
+            - Path=/social/**
+        - id: post
+          uri: lb://post
+          predicates:
+            - Path=/upload,/feed/**,/image/**
+  profiles:
+    active: local

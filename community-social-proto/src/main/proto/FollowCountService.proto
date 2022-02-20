@@ -1,0 +1,17 @@
+syntax= "proto3";
+option java_multiple_files= true;
+option java_package= 'com.icemelon404.community.social.proto';
+
+
+message FollowCount {
+  int32 followCount = 1;
+  int32 followerCount = 2;
+}
+
+message User {
+  int64 userId = 1;
+}
+
+service FollowCountService {
+  rpc fetchCount(User) returns (FollowCount);
+}

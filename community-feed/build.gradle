@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation project(":community-commons")
+    implementation project(":community-feed-proto")
+    implementation project(":community-grpc-common")
+    implementation ('org.springframework.boot:spring-boot-starter-data-cassandra')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation ('io.projectreactor:reactor-core')
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    api 'io.grpc:grpc-all:1.43.1'
+}
+
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.0"
+    }
+}

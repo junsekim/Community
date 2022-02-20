@@ -1,0 +1,43 @@
+syntax= "proto3";
+option java_multiple_files= true;
+option java_package= 'com.icemelon404.community.feed.proto';
+
+enum Direction {
+    UPPER=0;
+    LOWER=1;
+}
+
+message FeedRequest {
+    int64 feedOwnerId = 1;
+    int64 boundary= 2;
+    int32 size = 3;
+    Direction direction = 4;
+}
+
+message UserWithPost {
+    int64 feedOwnerId = 1;
+    int64 postId = 2;
+}
+message FeedPushRequest {
+    repeated UserWithPost userWithPost = 1;
+}
+
+message FeedResponse {
+    repeated int64 postId = 1 [packed= true];
+}
+
+message PushResult {
+    bool isSuccess = 1;
+    string  errorMessage = 2;
+}
+
+service SocialFeedService {
+    rpc getFeed(FeedRequest) returns (FeedResponse);
+    rpc pushFeed(FeedPushRequest) returns (PushResult);
+}
+
+
+service PrivateFeedService {
+    rpc getFeed(FeedRequest) returns (FeedResponse);
+    rpc pushFeed(FeedPushRequest) returns (PushResult);
+}

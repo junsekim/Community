@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+dependencies {
+    implementation project(":community-commons")
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation("mysql:mysql-connector-java:8.0.21")
+}
+
+bootJar {
+    enabled= false
+}
+
+jar {
+    enabled = true
+}

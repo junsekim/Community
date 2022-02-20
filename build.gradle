@@ -1,0 +1,27 @@
+
+subprojects {
+    group = 'com.icemelon404'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.22'
+        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    }
+    task wrapper(type: Wrapper){
+        gradleVersion = '7.2'
+    }
+    test {
+        useJUnitPlatform()
+    }
+    jar {
+        enabled=true
+    }
+}
